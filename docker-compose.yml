@@ -1,12 +1,12 @@
 version: "3.9"
 services:
-  app:
+  go_rss_service:
     build:
       dockerfile: ./docker/service/Dockerfile
       context: .
       target: dev
     volumes:
-      - ./codebase:/opt/app/api
+      - ./codebase:/opt/go_rss_service/api
     environment:
       API_SERVER_ADDR: ":3000"
     ports:
