@@ -1,27 +1,44 @@
+# github.com/joekesov/go-rss-reader-service
+
+## Install and run the RSS reader Service
+
+1. From .env.example file create a new .env file and choose the port number for the REST API
+```
+// .env file
+APP_PORT=3001
+```
+
+2. To build and run the REST Api service application
+
+```
 docker compose up -d --build
+```
 
-docker compose build
+or if you want to run it in debug mode
 
+- Build the container
+
+```
+$ docker compose build
+```
+
+- and run the container 
+
+```
 docker compose up
+```
 
-docker compose down
+```
+...
+go-rss-reader-service-go_rss_service-1  | running...
+go-rss-reader-service-go_rss_service-1  | [go-lib] initializing ...
+go-rss-reader-service-go_rss_service-1  | INFO[0000] starting server                               addr=":3000"
+```
 
+## Use
 
-docker compose run --rm app go mod tidy
-
-docker compose exec server bash
-
-
-go get github.com/joekesov/go-rss-reader-package
-
-docker compose run --rm go_rss_service go mod init github.com/joekesov/go-rss-reader-service
-
-docker compose run --rm go_rss_service air init
-
-
-
-docker compose run --rm go_rss_service go mod tidy
-
-docker compose run --rm app go mod tidy
-
-go get github.com/joekesov/go-rss-reader-package@v0.1.0
+```
+curl -H 'Content-Type: application/json' -X POST \
+    -d '{"urls":["https://blog.centos.org/feed","https://www.theregister.com/software/devops/headlines.atom"]}' \
+    http://localhost:3001/rss
+```

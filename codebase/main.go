@@ -5,7 +5,6 @@ import (
 	"os/signal"
 	"syscall"
 
-	// Make sure you change this line to match your module
 	"github.com/joekesov/go-rss-reader-service/apiserver"
 
 	"github.com/sirupsen/logrus"
@@ -24,7 +23,7 @@ func main() {
 
 func app() *cli.App {
 	return &cli.App{
-		Name:  "api-server",
+		Name:  "rss-reader-server",
 		Usage: "The API",
 		Commands: []*cli.Command{
 			apiServerCmd(),
