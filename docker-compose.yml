@@ -9,5 +9,6 @@ services:
       - ./codebase:/opt/go_rss_service/api
     environment:
       API_SERVER_ADDR: ":3000"
+      AMQP_SERVER_URL: "amqp://${RABBITMQ_USER}:${RABBITMQ_PASSWORD}@127.0.0.1:15672/"
     ports:
       - "${APP_PORT}:3000"

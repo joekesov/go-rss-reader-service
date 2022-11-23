@@ -6,6 +6,7 @@ import (
 	"syscall"
 
 	"github.com/joekesov/go-rss-reader-service/apiserver"
+	"github.com/joekesov/go-rss-reader-service/message"
 
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
@@ -19,6 +20,8 @@ func main() {
 	if err := app().Run(os.Args); err != nil {
 		logrus.WithError(err).Fatal("could not run application")
 	}
+
+	message.Consume()
 }
 
 func app() *cli.App {
